@@ -5,6 +5,7 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "vitepress": "^1.3.4",
     "vue": "^3.4.38"
   }
