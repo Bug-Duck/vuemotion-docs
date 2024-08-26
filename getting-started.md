@@ -46,7 +46,7 @@ Now find the top-level component (`./src/App.vue`), delete the example codes and
 
 ```vue
 <script setup lang="ts">
-import { Motion, Rect } from 'vuemotion'
+import { Motion, Rect } from '@vuemotion/lib'
 </script>
 
 <template>
@@ -57,6 +57,56 @@ import { Motion, Rect } from 'vuemotion'
 ```
 
 And then you can find a Rectangle on the screen
+
+Congratulations! You have got the usage of widgets, but now the graphs are static, we need let it dynamic.
+
+```vue
+<script setup lang="ts">
+import { usePlayer } from '@vuemotion/core'
+
+const player = usePlayer()
+player.play()
+</script>
+```
+
+The function will launch the animation with `requestAnimationFrame`.
+
+Let's add some animations on the rectangle:
+
+```vue
+<script setup lang="ts">
+import { usePlayer, useWidget } from '@vuemotion/core'
+import { move, Motion, Rect } from '@vuemotion/lib'
+
+const player = usePlayer()
+
+const rect = useWidget('rect')
+rect
+  .animate(move, 3, {
+    toX: 200,
+    toY: 300
+  })
+
+player.play()
+</script>
+
+<template>
+  <Motion :width="1600" :height="900">
+    <Rect :width="300" :height="300"/>
+  </Motion>
+</template>
+```
+
+First, we add a `wid` attribute on the `Rect` component, and then we called `useWidget` to get the widget, finally we add a animation `move` on it.
+
+Now launch it:
+
+```shell
+$ pnpm dev
+```
+
+If everything is okay, you will see the direct animation in the browser
+
 </div>
 
 <div v-if="current === 'location'">
