@@ -8,19 +8,19 @@
       backgroundColor: 'rgba(0,0,255,0.2)'
     }" @click="current = 'browser'">
       <i class="fa fa-chrome"></i>
-      Browser
+      Browser with Vite
     </BigButton>
     <BigButton :style="{
       backgroundColor: 'rgba(255,0,0,0.2)'
     }" @click="current = 'location'">
       <i class="fa fa-desktop"></i>
-      Location
+      Location with CLI
     </BigButton>
     <BigButton :style="{
       backgroundColor: 'rgba(0,255,0,0.2)'
     }" @click="current = 'studio'">
       <i class="fa fa-code"></i>
-      Studio
+      Studio with CLI
     </BigButton>
   </div>
 </template>
