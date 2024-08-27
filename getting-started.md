@@ -140,7 +140,6 @@ player.play()
 Via setting `by` to add easing function on a animation.
 
 Okay! You have handled the basic usage of VueMotion, now continue your adventure!
-
 </div>
 
 <div v-if="current === 'location'">
