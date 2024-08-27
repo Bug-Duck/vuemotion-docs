@@ -107,6 +107,40 @@ $ pnpm dev
 
 If everything is okay, you will see the direct animation in the browser
 
+Now the animation is running, but it looks a little wired, let's add a easing function on it!
+
+VueMotion offers many easing functions you would choose. We choose `easeBounce`:
+
+```vue
+<script setup lang="ts">
+import { usePlayer, useWidget } from '@vuemotion/core'
+import { move, Motion, Rect, easeBounce } from '@vuemotion/lib'
+
+const player = usePlayer()
+
+const rect = useWidget('rect')
+rect
+  .animate(move, 3, {
+    toX: 200,
+    toY: 300,
+    by: easeBounce
+  })
+
+player.play()
+</script>
+
+<template>
+  <Motion :width="1600" :height="900">
+    <Rect :width="300" :height="300"/>
+  </Motion>
+</template>
+
+```
+
+Via setting `by` to add easing function on a animation.
+
+Okay! You have handled the basic usage of VueMotion, now continue your adventure!
+
 </div>
 
 <div v-if="current === 'location'">
