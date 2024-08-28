@@ -2,6 +2,8 @@
 title: Router
 ---
 
+# Work with VueRouter
+
 You can also manage your animation scene with VueRouter. VueRouter offers great functions for your animation, in the long video producing work, it will be very useful.
 
 The file tree is as followings:
