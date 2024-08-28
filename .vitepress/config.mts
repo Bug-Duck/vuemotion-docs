@@ -13,9 +13,10 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Basic',
+        text: 'Tutorial',
         items: [
-          { text: 'Getting Started', link: '/getting-started' }
+          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Work with VueRouter', link: '/router' },
         ]
       }
     ],
