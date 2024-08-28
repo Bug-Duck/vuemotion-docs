@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "VueMotion Documentation",
+  title: "VueMotion Docs",
   description: "The official documentation of Vuemotion",
   head: [['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg' }]],
   themeConfig: {

@@ -22,7 +22,7 @@ provide('current', current)
 <Choose/>
 
 <div v-if="current === 'browser'">
-Firstly, you need prepare the following tools:
+Firstly, you need prepare the following develop tools:
 
 - NPM / PNPM / Yarn
 - A code editor such as VSCode
