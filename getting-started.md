@@ -21,7 +21,7 @@ provide('current', current)
 
 <Choose/>
 
-<div v-if="current === 'browser'">
+<template v-if="current === 'browser'">
 Firstly, you need prepare the following develop tools:
 
 - NPM / PNPM / Yarn
@@ -140,7 +140,7 @@ player.play()
 Via setting `by` to add easing function on a animation.
 
 Okay! You have handled the basic usage of VueMotion, now continue your adventure!
-</div>
+</template>
 
 <div v-if="current === 'location'">
 Developing...
