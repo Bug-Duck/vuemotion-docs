@@ -81,8 +81,8 @@ import { move, Motion, Rect } from '@vuemotion/lib'
 
 const player = usePlayer()
 
-const rect = useWidget('rect')
-rect
+const rect = useWidget('rect').props
+player.useAnimation(rect)
   .animate(move, 3, {
     toX: 200,
     toY: 300
@@ -119,8 +119,8 @@ import { move, Motion, Rect, easeBounce } from '@vuemotion/lib'
 
 const player = usePlayer()
 
-const rect = useWidget('rect')
-rect
+const rect = useWidget('rect').props
+player.useAnimation(rect)
   .animate(move, 3, {
     toX: 200,
     toY: 300,
