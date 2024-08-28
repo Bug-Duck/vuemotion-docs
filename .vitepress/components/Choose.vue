@@ -4,29 +4,40 @@
     display: 'flex',
     marginBottom: '2em',
   }">
-    <BigButton :style="{
-      backgroundColor: 'rgba(0,0,255,0.2)'
-    }" @click="current = 'browser'">
+    <a href="#browser" :style="{
+      display: 'flex',
+      flexGrow: 1,
+      textAlign: 'center',
+      justifyItems: 'center',
+      alignItems: 'center',
+    }">
       <i class="fa fa-chrome"></i>
       Browser with Vite
-    </BigButton>
-    <BigButton :style="{
-      backgroundColor: 'rgba(255,0,0,0.2)'
-    }" @click="current = 'location'">
+    </a>
+    <a href="#cli" :style="{
+      display: 'flex',
+      flexGrow: 1,
+      textAlign: 'center',
+      justifyItems: 'center',
+      alignItems: 'center',
+    }">
       <i class="fa fa-desktop"></i>
       Location with CLI
-    </BigButton>
-    <BigButton :style="{
-      backgroundColor: 'rgba(0,255,0,0.2)'
-    }" @click="current = 'studio'">
+    </a>
+    <a href="#studio" :style="{
+      display: 'flex',
+      flexGrow: 1,
+      textAlign: 'center',
+      justifyItems: 'center',
+      alignItems: 'center'
+    }">
       <i class="fa fa-code"></i>
       Studio with CLI
-    </BigButton>
+    </a>
   </div>
 </template>
 
 <script setup lang="ts">
-import BigButton from './BigButton.vue'
 import { inject, Ref } from 'vue';
 
 const current = inject('current') as Ref<string>

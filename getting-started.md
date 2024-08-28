@@ -21,7 +21,8 @@ provide('current', current)
 
 <Choose/>
 
-<template v-if="current === 'browser'">
+# Start with Browser and Vite {#browser}
+
 Firstly, you need prepare the following develop tools:
 
 - NPM / PNPM / Yarn
@@ -140,12 +141,11 @@ player.play()
 Via setting `by` to add easing function on a animation.
 
 Okay! You have handled the basic usage of VueMotion, now continue your adventure!
-</template>
 
-<div v-if="current === 'location'">
-Developing...
-</div>
+# Start with CLI {#cli}
 
-<div v-if="current === 'studio'">
 Developing...
-</div>
+
+# Start with Studio {#studio}
+
+Developing...
