@@ -4,16 +4,6 @@
     display: 'flex',
     marginBottom: '2em',
   }">
-    <a href="#browser" :style="{
-      display: 'flex',
-      flexGrow: 1,
-      textAlign: 'center',
-      justifyItems: 'center',
-      alignItems: 'center',
-    }">
-      <i class="fa fa-chrome"></i>
-      Browser with Vite
-    </a>
     <a href="#cli" :style="{
       display: 'flex',
       flexGrow: 1,
@@ -24,15 +14,15 @@
       <i class="fa fa-desktop"></i>
       Location with CLI
     </a>
-    <a href="#studio" :style="{
+    <a href="#browser" :style="{
       display: 'flex',
       flexGrow: 1,
       textAlign: 'center',
       justifyItems: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     }">
-      <i class="fa fa-code"></i>
-      Studio with CLI
+      <i class="fa fa-chrome"></i>
+      Browser with Vite
     </a>
   </div>
 </template>

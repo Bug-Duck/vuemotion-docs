@@ -21,6 +21,39 @@ provide('current', current)
 
 <Choose/>
 
+# Start with CLI {#cli}
+
+First, you need to globally install the cli tools:
+
+```shell
+$ npm i -g @vuemotion/client
+```
+
+And find a directory, type the following command:
+
+```shell
+$ vuemotion create <your-project-name>
+$ cd <your-project-name>
+```
+
+And then install the dependencies:
+
+```shell
+$ pnpm i
+```
+
+Finally, use `start` command to start the studio
+
+```shell
+$ pnpm start
+```
+
+When you edit the animation to your satistify, you can use `export` command to export the video:
+
+```shell
+$ pnpm export 3 # The export duration is 3s.
+```
+
 # Start with Browser and Vite {#browser}
 
 Firstly, you need prepare the following develop tools:
@@ -40,7 +73,7 @@ Choose Vue framework, and then:
 ```shell
 $ cd my-vuemotion-project
 $ pnpm install
-$ pnpm add vuemotion
+$ pnpm add @vuemotion/core @vuemotion/lib
 ```
 
 Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
@@ -141,11 +174,3 @@ player.play()
 Via setting `by` to add easing function on a animation.
 
 Okay! You have handled the basic usage of VueMotion, now continue your adventure!
-
-# Start with CLI {#cli}
-
-Developing...
-
-# Start with Studio {#studio}
-
-Developing...
