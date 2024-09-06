@@ -76,6 +76,8 @@ $ pnpm install
 $ pnpm add @vue-motion/core @vue-motion/lib
 ```
 
+# Begin
+
 Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
 
 ```vue
@@ -114,11 +116,11 @@ import { move, Motion, Rect } from '@vue-motion/lib'
 
 const player = usePlayer()
 
-const rect = useWidget('rect').props
+const rect = useWidget('rect')
 player.useAnimation(rect)
   .animate(move, 3, {
-    toX: 200,
-    toY: 300
+    offsetX: 200,
+    offsetY: 300
   })
 
 player.play()
@@ -136,7 +138,7 @@ First, we add a `wid` attribute on the `Rect` component, and then we called `use
 Now launch it:
 
 ```shell
-$ pnpm dev
+$ pnpm start
 ```
 
 If everything is okay, you will see the direct animation in the browser
@@ -152,11 +154,11 @@ import { move, Motion, Rect, easeBounce } from '@vue-motion/lib'
 
 const player = usePlayer()
 
-const rect = useWidget('rect').props
+const rect = useWidget('rect')
 player.useAnimation(rect)
   .animate(move, 3, {
-    toX: 200,
-    toY: 300,
+    offsetX: 200,
+    offsetY: 300,
     by: easeBounce
   })
 
