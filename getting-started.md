@@ -26,7 +26,7 @@ provide('current', current)
 First, you need to globally install the cli tools:
 
 ```shell
-$ npm i -g @vuemotion/client
+$ npm i -g @vue-motion/client
 ```
 
 And find a directory, type the following command:
@@ -73,14 +73,14 @@ Choose Vue framework, and then:
 ```shell
 $ cd my-vuemotion-project
 $ pnpm install
-$ pnpm add @vuemotion/core @vuemotion/lib
+$ pnpm add @vue-motion/core @vue-motion/lib
 ```
 
 Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
 
 ```vue
 <script setup lang="ts">
-import { Motion, Rect } from '@vuemotion/lib'
+import { Motion, Rect } from '@vue-motion/lib'
 </script>
 
 <template>
@@ -96,7 +96,7 @@ Congratulations! You have got the usage of widgets, but now the graphs are stati
 
 ```vue
 <script setup lang="ts">
-import { usePlayer } from '@vuemotion/core'
+import { usePlayer } from '@vue-motion/core'
 
 const player = usePlayer()
 player.play()
@@ -109,8 +109,8 @@ Let's add some animations on the rectangle:
 
 ```vue
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vuemotion/core'
-import { move, Motion, Rect } from '@vuemotion/lib'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import { move, Motion, Rect } from '@vue-motion/lib'
 
 const player = usePlayer()
 
@@ -147,8 +147,8 @@ VueMotion offers many easing functions you would choose. We choose `easeBounce`:
 
 ```vue
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vuemotion/core'
-import { move, Motion, Rect, easeBounce } from '@vuemotion/lib'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import { move, Motion, Rect, easeBounce } from '@vue-motion/lib'
 
 const player = usePlayer()
 
