@@ -16,6 +16,7 @@ export default defineConfig({
         text: 'Tutorial',
         items: [
           { text: 'Getting Started', link: '/getting-started' },
+          { text: 'CLI Tools', link: '/cli' },
           { text: 'Work with VueRouter', link: '/router' },
         ]
       }
