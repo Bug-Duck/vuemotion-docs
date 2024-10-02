@@ -23,9 +23,9 @@ const members = [
     avatar: 'https://avatars.githubusercontent.com/u/75195784?v=4',
     name: 'Howard Zhang',
     title: 'Programmer',
-    links: {
+    links: [
       { icon: 'github', link: 'https://github.com/Howardzhangdqs' },
-    }
+    ]
   }
   {
     avatar: 'https://avatars.githubusercontent.com/u/57032603?v=4',
