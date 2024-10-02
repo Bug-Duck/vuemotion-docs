@@ -26,7 +26,7 @@ const members = [
     links: [
       { icon: 'github', link: 'https://github.com/Howardzhangdqs' },
     ]
-  }
+  },
   {
     avatar: 'https://avatars.githubusercontent.com/u/57032603?v=4',
     name: '27Onion Nebell',
