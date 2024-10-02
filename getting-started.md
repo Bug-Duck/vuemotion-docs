@@ -118,9 +118,10 @@ const player = usePlayer()
 
 const rect = useWidget('rect')
 player.useAnimation(rect)
-  .animate(move, 3, {
+  .animate(move, {
     offsetX: 200,
-    offsetY: 300
+    offsetY: 300,
+    duartion: 3,
   })
 
 player.play()
@@ -156,10 +157,11 @@ const player = usePlayer()
 
 const rect = useWidget('rect')
 player.useAnimation(rect)
-  .animate(move, 3, {
+  .animate(move, {
     offsetX: 200,
     offsetY: 300,
-    by: easeBounce
+    by: easeBounce,
+    duration: 3,
   })
 
 player.play()

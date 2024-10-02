@@ -12,7 +12,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: API Reference
-      link: /api-examples
+      link: /apis/index
   image:
     src: /logo.svg
     alt: VueMotion Logo
