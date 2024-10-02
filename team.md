@@ -16,7 +16,7 @@ const members = [
     title: 'Creator',
     links: [
       { icon: 'github', link: 'https://github.com/sheepbox8646' },
-      { icon: 'x', link: 'https://twitter.com/AcboxSky' }
+      { icon: 'x', link: 'https://twitter.com/AcboxLiu' }
     ]
   },
   {
