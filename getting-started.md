@@ -4,11 +4,7 @@ title: Getting Started
 
 # Getting Started
 
-Welcome to VueMotion!
-
-With VueMotion, you can rapidly make animations in everywhere. You can use VueMotion to make video clip, animation producing and more cool things you may consider or not consider. Now let's begin the travel!
-
-You can choose three ways to use VueMotion:
+---
 
 <script setup>
 import Choose from './.vitepress/components/Choose.vue'
@@ -21,62 +17,97 @@ provide('current', current)
 
 <Choose/>
 
-# Start with CLI {#cli}
+## Studio {#cli}
 
-First, you need to globally install the cli tools:
+Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
 
-```shell
-$ npm i -g @vue-motion/client
+```vue
+<script setup lang="ts">
+import { Motion, Rect } from '@vue-motion/lib'
+import { useMotion } from '@vue-motion/core'
+
+const { width, height } = useMotion()
+width.value = 1600
+height.value = 900
+</script>
+
+<template>
+  <Rect :width="300" :height="300"/>
+</template>
 ```
 
-And find a directory, type the following command:
+And then you can find a Rectangle on the screen
 
-```shell
-$ vuemotion create <your-project-name>
-$ cd <your-project-name>
+Let's add some animations on the rectangle:
+
+```vue
+<script setup lang="ts">
+import { move, Motion, Rect } from '@vue-motion/lib'
+import { useMotion, usePlayer, useWidget } from '@vue-motion/core'
+
+const { width, height } = useMotion()
+width.value = 1600
+height.value = 900
+
+const { useAnimation } = usePlayer()
+
+const rect = useWidget('rect')
+useAnimation(rect)
+  .animate(move, {
+    offsetX: 200,
+    offsetY: 300,
+    duartion: 3,
+  })
+</script>
+
+<template>
+  <Rect :width="300" :height="300" wid="rect"/>
+</template>
 ```
 
-And then install the dependencies:
+First, we add a `wid` attribute on the `Rect` component, and then we called `useWidget` to get the widget, finally we add a animation `move` on it.
 
-```shell
-$ pnpm i
-```
-
-Finally, use `start` command to start the studio
+Now launch it:
 
 ```shell
 $ pnpm start
 ```
 
-When you edit the animation to your satistify, you can use `export` command to export the video:
+If everything is okay, you will see the direct animation in the browser
 
-```shell
-$ pnpm export 3 # The export duration is 3s.
+Now the animation is running, but it looks a little wired, let's add a easing function on it!
+
+VueMotion offers many easing functions you would choose. We choose `easeBounce`:
+
+```vue
+<script setup lang="ts">
+import { move, Motion, Rect, easeBounce } from '@vue-motion/lib'
+import { useMotion, usePlayer, useWidget } from '@vue-motion/core'
+
+const { width, height } = useMotion()
+width.value = 1600
+height.value = 900
+
+const { useAnimation } = usePlayer()
+
+const rect = useWidget('rect')
+useAnimation(rect)
+  .animate(move, {
+    offsetX: 200,
+    offsetY: 300,
+    duartion: 3,
+    by: easeBounce,
+  })
+</script>
+
+<template>
+  <Rect :width="300" :height="300" wid="rect"/>
+</template>
 ```
 
-# Start with Browser and Vite {#browser}
+Via setting `by` to add easing function on a animation.
 
-Firstly, you need prepare the following develop tools:
-
-- NPM / PNPM / Yarn
-- A code editor such as VSCode
-- A modern Browser such as Chrome, Firefox, Edge
-
-And then you need initialize them, we use pnpm as the example:
-
-```shell
-$ pnpm create vite my-vuemotion-project
-```
-
-Choose Vue framework, and then:
-
-```shell
-$ cd my-vuemotion-project
-$ pnpm install
-$ pnpm add @vue-motion/core @vue-motion/lib
-```
-
-# Begin
+## Browser {#browser}
 
 Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
 
@@ -129,7 +160,7 @@ player.play()
 
 <template>
   <Motion :width="1600" :height="900">
-    <Rect :width="300" :height="300"/>
+    <Rect :width="300" :height="300" wid="rect"/>
   </Motion>
 </template>
 ```
@@ -176,5 +207,3 @@ player.play()
 ```
 
 Via setting `by` to add easing function on a animation.
-
-Okay! You have handled the basic usage of VueMotion, now continue your adventure!

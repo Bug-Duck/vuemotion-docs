@@ -12,7 +12,7 @@
       alignItems: 'center',
     }">
       <i class="fa fa-desktop"></i>
-      Location with CLI
+      Location with Studio
     </a>
     <a href="#browser" :style="{
       display: 'flex',
