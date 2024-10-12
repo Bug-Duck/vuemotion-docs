@@ -4,11 +4,11 @@
 *.log
 *.tgz
 .DS_Store
-.vscode
 .idea
 .temp
 .vite_opt_cache
 .vscode
+.vitepress/cache
 dist
 cache
 temp
