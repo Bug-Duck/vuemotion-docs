@@ -150,6 +150,10 @@ export default defineConfig({
         icon: "x",
         link: "https://twitter.com/bugduckteam",
       },
+      {
+        icon: "discord",
+        link: "https://discord.gg/PUVcpkv8"
+      }
     ],
 
     footer: {
