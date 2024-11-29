@@ -36,6 +36,15 @@ const members = [
       { icon: 'x', link: 'https://twitter.com/2Nebell' }
     ]
   },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/55052188?v=4',
+    name: 'Thomas Wang',
+    title: 'Programmer | Documentation',
+    links: [
+      { icon: 'github', link: 'https://github.com/cxzlw' },
+      { icon: 'x', link: 'https://x.com/enocxzlw' }
+    ]
+  },
   // {
   //   avatar: 'https://avatars.githubusercontent.com/u/110272607?v=4',
   //   name: 'PrairieFire2b',

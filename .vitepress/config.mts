@@ -19,6 +19,7 @@ export default defineConfig({
         items: [
           { text: "Installation", link: "/installation" },
           { text: "Getting Started", link: "/getting-started" },
+          { text: "Animation", link: "/animating" },
           { text: "CLI Tools", link: "/cli" },
           { text: "Work with VueRouter", link: "/router" },
         ],

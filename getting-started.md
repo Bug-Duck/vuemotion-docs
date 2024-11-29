@@ -19,11 +19,28 @@ provide('current', current)
 
 ## Studio {#cli}
 
-Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
+Under the studio mode, you can use our client tool to preview and export your animation, we provide a powerful previewer and export tool.
+
+After creating a new VueMotion project, you can see the file tree like this:
+
+```txt
+my-video-project
+├── src
+│   ├── scenes
+│   ├── App.vue
+│   ├── main.ts
+│   ├── router.ts
+│   ├── player.ts
+├── package.json
+├── ...
+```
+
+We use `VueRouter` to manage the routing of the animation so that you can make a series of animations and connect them together to make a complete video. Each scene is a vue file placed in the `scenes` directory.
+
+Let's read the `App.vue` file:
 
 ```vue
 <script setup lang="ts">
-import { Motion, Rect } from '@vue-motion/lib'
 import { useMotion } from '@vue-motion/core'
 
 const { width, height } = useMotion()
@@ -32,178 +49,164 @@ height.value = 900
 </script>
 
 <template>
-  <Rect :width="300" :height="300"/>
+  <RouterView />
 </template>
 ```
 
-And then you can find a Rectangle on the screen
+In this file, we use `useMotion` to get the width and height of the animation, and then we set the width and height of the animation to 1600 and 900.
 
-Let's add some animations on the rectangle:
+And then let's see the `main.ts` file:
+
+```typescript
+import { createApp } from 'vue'
+import App from '@vue-motion/app/src/App.vue'
+import '@vue-motion/app/src/output.css'
+import player from './player'
+import router from './router'
+
+createApp(App).use(player).use(router).mount('#app')
+```
+
+In this file, we create a vue app and use the `player` and `router` plugins.
+
+The most important thing is the `player` plugin, it provides the player component and the player configuration:
+
+```typescript
+import { createPlayer } from '@vue-motion/core'
+
+export default createPlayer({
+  studio: true,
+  fps: 60,
+})
+```
+
+Under the studio mode, the `fps` is 60, and the `studio` is `true`. If you just want to use in the browser, you can set the `studio` to `false`. No matter what mode you are using, the `studio` option is required.
+
+The main scene is in the `src/scenes/MainScene.vue` file:
 
 ```vue
 <script setup lang="ts">
-import { move, Motion, Rect } from '@vue-motion/lib'
-import { useMotion, usePlayer, useWidget } from '@vue-motion/core'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import type { TextOptions } from '@vue-motion/lib'
+import { Group, Image, Text, fadeIn, stroke } from '@vue-motion/lib'
+import { onMounted } from 'vue'
 
-const { width, height } = useMotion()
-width.value = 1600
-height.value = 900
+const title = useWidget<TextOptions>()
+const text = useWidget<TextOptions>()
 
-const { useAnimation } = usePlayer()
-
-const rect = useWidget('rect')
-useAnimation(rect)
-  .animate(move, {
-    offsetX: 200,
-    offsetY: 300,
-    duartion: 3,
-  })
+onMounted(() => {
+  const player = usePlayer()
+  player.useAnimation(title)
+    .animate(stroke, { duration: 1 })
+  player.useAnimation(text)
+    .delay(1)
+    .animate(fadeIn, { duration: 1, from: 0, to: 1 })
+  player.play()
+})
 </script>
 
 <template>
-  <Rect :width="300" :height="300" wid="rect"/>
+  <Group :y="-200">
+    <Image href="/vite.svg" :x="-350" :width="150" :height="150" />
+    <Image href="/logo.svg" :x="200" :width="150" :height="150" />
+    <Image href="/vue.svg" :x="-75" :width="150" :height="150" />
+  </Group>
+  <Group>
+    <Text :y="10" :font-size="50" :widget="title" border-color="white" fill-color="none">
+      Vue + Vite + VueMotion
+    </Text>
+    <Text :y="70" :font-size="20" :widget="text" :opacity="0">
+      Build your animation with Vuejs
+    </Text>
+  </Group>
 </template>
 ```
 
-First, we add a `wid` attribute on the `Rect` component, and then we called `useWidget` to get the widget, finally we add a animation `move` on it.
+In this file, we use the `usePlayer` and `useWidget` functions to get the player and the widget, and then we use the `animate` function to animate the widget.
 
-Now launch it:
+Last step is to export the animation:
 
 ```shell
-$ pnpm start
+$ pnpm export 2
 ```
 
-If everything is okay, you will see the direct animation in the browser
+The animation will be output to the root directory:
 
-Now the animation is running, but it looks a little wired, let's add a easing function on it!
-
-VueMotion offers many easing functions you would choose. We choose `easeBounce`:
-
-```vue
-<script setup lang="ts">
-import { move, Motion, Rect, easeBounce } from '@vue-motion/lib'
-import { useMotion, usePlayer, useWidget } from '@vue-motion/core'
-
-const { width, height } = useMotion()
-width.value = 1600
-height.value = 900
-
-const { useAnimation } = usePlayer()
-
-const rect = useWidget('rect')
-useAnimation(rect)
-  .animate(move, {
-    offsetX: 200,
-    offsetY: 300,
-    duartion: 3,
-    by: easeBounce,
-  })
-</script>
-
-<template>
-  <Rect :width="300" :height="300" wid="rect"/>
-</template>
-```
-
-Via setting `by` to add easing function on a animation.
+<video src="/output.mp4" autoplay loop></video>
 
 ## Browser {#browser}
 
-Now find the top-level component (`./src/App.vue`), delete the example codes and try to use the following codes:
+Under the browser mode, you need to create a new vue project and install the `@vue-motion/core` and `@vue-motion/lib` packages.
 
-```vue
-<script setup lang="ts">
-import { Motion, Rect } from '@vue-motion/lib'
-</script>
-
-<template>
-  <Motion :width="1600" :height="900">
-    <Rect :width="300" :height="300"/>
-  </Motion>
-</template>
-```
-
-And then you can find a Rectangle on the screen
-
-Congratulations! You have got the usage of widgets, but now the graphs are static, we need let it dynamic.
-
-```vue
-<script setup lang="ts">
-import { usePlayer } from '@vue-motion/core'
-
-const player = usePlayer()
-player.play()
-</script>
-```
-
-The function will launch the animation with `requestAnimationFrame`.
-
-Let's add some animations on the rectangle:
-
-```vue
-<script setup lang="ts">
-import { usePlayer, useWidget } from '@vue-motion/core'
-import { move, Motion, Rect } from '@vue-motion/lib'
-
-const player = usePlayer()
-
-const rect = useWidget('rect')
-player.useAnimation(rect)
-  .animate(move, {
-    offsetX: 200,
-    offsetY: 300,
-    duartion: 3,
-  })
-
-player.play()
-</script>
-
-<template>
-  <Motion :width="1600" :height="900">
-    <Rect :width="300" :height="300" wid="rect"/>
-  </Motion>
-</template>
-```
-
-First, we add a `wid` attribute on the `Rect` component, and then we called `useWidget` to get the widget, finally we add a animation `move` on it.
-
-Now launch it:
+We suggest you to use Vite to create a new project.
 
 ```shell
-$ pnpm start
+$ pnpm create vite my-video-project --template template-vue-ts
 ```
 
-If everything is okay, you will see the direct animation in the browser
+Then install the `@vue-motion/core` and `@vue-motion/lib` packages:
 
-Now the animation is running, but it looks a little wired, let's add a easing function on it!
+```shell
+$ cd my-video-project
+$ pnpm install
+$ pnpm add @vue-motion/core @vue-motion/lib
+```
 
-VueMotion offers many easing functions you would choose. We choose `easeBounce`:
+Later, you will get a file tree like this:
+
+```txt
+my-video-project
+├── src
+│   ├── main.ts
+│   ├── App.vue
+├── package.json
+├── ...
+```
+
+Firstly we need to add the player to the `main.ts` file:
+
+```typescript
+import { createApp } from 'vue'
+import App from './App.vue'
+import { createPlayer } from '@vue-motion/core'
+
+createApp(App).use(createPlayer({
+  studio: false,
+  fps: 60,
+})).mount('#app')
+```
+
+Notice that we set the `studio` to `false`.
+
+In browser mode, we need to import the component `<Motion>` package and use it in the `App.vue` file:
 
 ```vue
-<script setup lang="ts">
-import { usePlayer, useWidget } from '@vue-motion/core'
-import { move, Motion, Rect, easeBounce } from '@vue-motion/lib'
-
-const player = usePlayer()
-
-const rect = useWidget('rect')
-player.useAnimation(rect)
-  .animate(move, {
-    offsetX: 200,
-    offsetY: 300,
-    by: easeBounce,
-    duration: 3,
-  })
-
-player.play()
+<script setup>
+import { Motion } from '@vue-motion/lib'
 </script>
 
 <template>
   <Motion :width="1600" :height="900">
-    <Rect :width="300" :height="300"/>
+    <Group>
+      <Text :y="10" :font-size="50" wid="title" border-color="white" fill-color="none">
+        Hello VueMotion!
+      </Text>
+    </Group>
   </Motion>
 </template>
-
 ```
 
-Via setting `by` to add easing function on a animation.
+Okay, that's it! You just need to play the animation by calling the `play` function:
+
+```typescript
+const player = usePlayer()
+onMounted(() => {
+  player.play()
+})
+```
+
+:::warning
+
+You are supposed to play the animation in the `onMounted` hook, because the player needs to wait for the DOM to be mounted before it can play the animation, otherwise the animation wouldn't work.
+
+:::
