@@ -28,6 +28,15 @@ const members = [
     ]
   },
   {
+    avatar: 'https://avatars.githubusercontent.com/u/87633881?v=4',
+    name: 'Dylan Su',
+    title: 'Programmer | Documentation',
+    links: [
+      { icon: 'github', link: 'https://github.com/xs10l3' },
+      { icon: 'x', link: 'https://twitter.com/sujiaqi2008' }
+    ]
+  },
+  {
     avatar: 'https://avatars.githubusercontent.com/u/57032603?v=4',
     name: '27Onion Nebell',
     title: 'Programmer',
