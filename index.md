@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "VueMotion"
-  text: "Create animations use Vuejs"
+  text: "Create animations and clip videos with Vuejs"
   tagline: "The next-generation animation engine"
   actions:
     - theme: brand
