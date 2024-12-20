@@ -21,13 +21,13 @@ import { onMounted } from 'vue'
 const { play, useAnimation } = usePlayer()
 
 const text = useWidget<TextOptions>()
-text.move(200, 300)
-text.moveTo(300, 400)
-text.rotateTo(200, {
-  duration: 2 // seconds
-})
 
 onMounted(() => {
+  text.move(200, 300)
+  text.moveTo(300, 400)
+  text.rotateTo(200, {
+  duration: 2 // seconds
+})
   play()
 })
 </script>
@@ -42,6 +42,12 @@ onMounted(() => {
 :::tip
 
 The default duration of the animation is 1 second, you can change it by setting the `duration` option.
+
+:::
+
+:::warn
+
+All the animation API are supposed to be called in the `onMounted` hook, because the animation is not executed immediately, it will be executed after the `play` method is called.
 
 :::
 
@@ -71,7 +77,7 @@ There are references to the timing functions in the [Website](https://www.desmos
 
 There are some special methods:
 
-## `delay`
+### `delay`
 
 The `delay` method is used to set the delay time of the animation.
 
@@ -79,7 +85,7 @@ The `delay` method is used to set the delay time of the animation.
 text.delay(1)
 ```
 
-## `animate`
+### `animate`
 
 The `animate` method is used to set the animation.
 
@@ -95,7 +101,7 @@ text.animate(move, {
 })
 ```
 
-## `parallel`
+### `parallel`
 
 This is a important method, it can make the animations run in parallel.
 
@@ -193,7 +199,7 @@ onMounted(() => {
 </template>
 ```
 
-## `delay`
+### `delay`
 
 The `delay` method is used to set the delay time of the animation.
 
@@ -204,7 +210,7 @@ useAnimation(text)
   .delay(1)
 ```
 
-## `exec`
+### `exec`
 
 The `exec` method is used to execute the animation.
 
