@@ -13,6 +13,10 @@ export default defineConfig({
       { text: "Sponsor", link: "https://afdian.com/a/vuemotion" },
     ],
 
+    editLink: {
+      pattern: 'https://github.com/Bug-Duck/vuemotion-docs/edit/main/:path'
+    },
+
     sidebar: [
       {
         text: "Tutorial",

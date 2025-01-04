@@ -45,7 +45,7 @@ The default duration of the animation is 1 second, you can change it by setting 
 
 :::
 
-:::warn
+:::warning
 
 All the animation API are supposed to be called in the `onMounted` hook, because the animation is not executed immediately, it will be executed after the `play` method is called.
 
