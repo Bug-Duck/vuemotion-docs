@@ -14,5 +14,10 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+  },
+  themeConfig: {
+    editLink: {
+      pattern: 'https://github.com/Bug-Duck/vuemotion-docs/edit/main/:path'
+    }
   }
 } satisfies Theme
