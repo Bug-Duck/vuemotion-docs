@@ -1,3 +1,4 @@
-# VueMotion Offical Documentation of English
+# VueMotion Offical Documentation
+## English
 
 [vuemotion.dev](https://vuemotion.dev)
